@@ -1,0 +1,3 @@
+[
+		{ "keys": [ "ctrl+alt+v" ], "command": "view_in_browser" }
+]
