@@ -4,6 +4,7 @@
 # 			- New settings.json file to map browser/commands to OSes
 # 			- Plugin will use the specified browser to open files, or default to OS default when browser is unsupported
 # 			- Addressed encoding issue when calling open_new_tab
+# 			- Added ability to specify and respect local server config per project
 #
 # 		05/21/2012:
 # 			- Temp file only created if view is unsaved
@@ -22,6 +23,8 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 	_browserCommand = ""
 
 	def run(self, edit):
+		projectSettings = self.view.settings().get("sublime-view-in-browser")
+
 		#
 		# Load settings, if any
 		#
@@ -32,6 +35,13 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		# file there save it to a temporary location.
 		#
 		fileToOpen = self.view.file_name()
+
+		#
+		# If we've specified settings for a local server environment 
+		# use them
+		#
+		if projectSettings:
+			fileToOpen = fileToOpen.replace(projectSettings["basePath"], projectSettings["baseUrl"])
 
 		if fileToOpen == None:
 			#

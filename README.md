@@ -14,7 +14,7 @@ Using the Sublime Text 2 Package Control plugin (http://wbond.net/sublime_packag
 press *CTRL + SHIFT + P* and find **Package Control: Install Package** and press *Enter*.
 Find this plugin in the list by name **View In Browser**.
 
-## Configuration
+## Configuring Browsers
 By default this plugin will open files in Firefox. You can configure it to open
 using another browser of your choice. To do this find the *settings.json* file
 located in your Sublime configuration directory. This location varies by OS. For 
@@ -31,3 +31,42 @@ Each browser listed is an array (list) of configurations that allow you to setup
 for multiple operating systems. For example under *chrome* there are two configurations.
 The first is for your average Linux system. The second is for Windows. You'll notice the
 Windows path is incorrect and must be changed for your system.
+
+## Configure to View on Local Server
+The View In Browser plugin also supports the ability to view files in the context of
+a local server. So if you have a local Apache, Tomcat, or some other server application running
+you can configure this plugin to open your file prefixed with a URL. 
+
+To configure this the View In Browser plugin reads the configuration of your currently
+loaded project. You can edit a project file by opening the *sublime-project* file
+by choosing **Project** -> **Edit Project**. In your project file you will need to specify 
+two things:
+
+* **baseUrl** - The root URL to prefix files with 
+* **basePath** - The base path where your site/application lives
+
+Here's how that looks.
+
+```javascript
+{
+	"folders":
+	[
+		{
+			"path": "/home/<username>/code/python/my-cool-website"
+		}
+	],
+	"settings": {
+		"sublime-view-in-browser": {
+			"baseUrl": "http://localhost:8080",
+			"basePath": "/home/<username>/code/python/my-cool-website"
+		}
+	}
+}
+```
+
+Notice the key named **settings** which is a dictionary that contains another key named
+**sublime-view-in-browser**. This is where you will put your **baseUrl** and **basePath**
+settings.
+
+Now when you activate View In Browser your file will open with the HTTP protocol instead
+of the FILE protocol.
