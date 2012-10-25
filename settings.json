@@ -1,0 +1,39 @@
+{
+	"supportedBrowsers": {
+		"firefox": [
+			{
+				"osname": ".*",
+				"platform": ".*",
+				"command": "firefox"
+			}
+		],
+		"safari": [
+			{
+				"osname": "posix",
+				"platform": "darwin",
+				"command": "safari"
+			}
+		],
+		"iexplore": [
+			{
+				"osname": "nt",
+				"platform": "win32",
+				"command": "iexplore"
+			}
+		],
+		"chrome": [
+			{
+				"osname": "posix",
+				"platform": "linux.*",
+				"command": "google-chrome"
+			},
+			{
+				"osname": "nt",
+				"platform": "win32",
+				"command": "chrome"
+			}
+		]
+	},
+
+	"selectedBrowser": "chrome"
+}
