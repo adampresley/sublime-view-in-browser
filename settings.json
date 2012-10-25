@@ -18,7 +18,7 @@
 			{
 				"osname": "nt",
 				"platform": "win32",
-				"command": "iexplore"
+				"command": "C:/Program Files/Internet Explorer/iexplore.exe"
 			}
 		],
 		"chrome": [
@@ -30,10 +30,10 @@
 			{
 				"osname": "nt",
 				"platform": "win32",
-				"command": "chrome"
+				"command": "C:/Users/psykoprogrammer/AppData/Local/Google/Chrome/Application/chrome.exe"
 			}
 		]
 	},
 
-	"selectedBrowser": "chrome"
+	"selectedBrowser": "firefox"
 }
