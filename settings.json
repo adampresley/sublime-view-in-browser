@@ -11,7 +11,7 @@
 			{
 				"osname": "posix",
 				"platform": "darwin",
-				"command": "safari"
+				"command": "open -a safari"
 			}
 		],
 		"iexplore": [
