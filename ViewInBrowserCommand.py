@@ -1,5 +1,10 @@
 #
 # History:
+#
+# 		11/01/2012:
+# 			- Altered command to open Safari on Mac
+# 			- When invoked the current view is auto-saved
+#
 #  	10/25/2012:
 # 			- New settings.json file to map browser/commands to OSes
 # 			- Plugin will use the specified browser to open files, or default to OS default when browser is unsupported
@@ -59,7 +64,13 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 			tempFile.close()
 
 			fileToOpen = tempFile.name
+		else:
+			#
+			# Ensure the current view is saved
+			#
+			self.view.window().run_command("save")
 
+			
 		# 
 		# And open. If the settings file contains a valid selected browser use that
 		# command to open this file. Otherwise use the system default.
