@@ -71,5 +71,21 @@ settings.
 Now when you activate View In Browser your file will open with the HTTP protocol instead
 of the FILE protocol.
 
+## Change History
+
+* 11/01/2012:
+   * Altered command to open Safari on Mac
+   * When invoked the current view is auto-saved
+* 10/25/2012:
+   * New settings.json file to map browser/commands to OSes
+   * Plugin will use the specified browser to open files, or default to OS default when browser is unsupported
+   * Addressed encoding issue when calling open_new_tab
+   * Added ability to specify and respect local server config per project
+* 05/21/2012:
+   * Temp file only created if view is unsaved
+* 05/18/2012:
+   * Initial code
+
+
 ## License
 See the file LICENSE
