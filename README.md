@@ -70,3 +70,6 @@ settings.
 
 Now when you activate View In Browser your file will open with the HTTP protocol instead
 of the FILE protocol.
+
+## License
+See the file LICENSE
