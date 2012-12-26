@@ -32,6 +32,13 @@
 				"platform": "win32",
 				"command": "C:/Users/psykoprogrammer/AppData/Local/Google/Chrome/Application/chrome.exe"
 			}
+		],
+		"chromium": [
+			{
+				"osname": "posix",
+				"platform": "linux.*",
+				"command": "chromium"
+			}
 		]
 	},
 

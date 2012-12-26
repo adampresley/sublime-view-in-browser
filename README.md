@@ -73,6 +73,8 @@ of the FILE protocol.
 
 ## Change History
 
+* 12/26/2012:
+   * Added Linux Chromium to the supported browsers list
 * 11/01/2012:
    * Altered command to open Safari on Mac
    * When invoked the current view is auto-saved
