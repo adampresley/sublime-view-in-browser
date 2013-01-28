@@ -73,6 +73,8 @@ of the FILE protocol.
 
 ## Change History
 
+* 01/28/2013:
+   * Merged in change from imaginationac to remove menu nesting
 * 12/26/2012:
    * Added Linux Chromium to the supported browsers list
 * 11/01/2012:
