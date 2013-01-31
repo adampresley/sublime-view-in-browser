@@ -1,6 +1,10 @@
 #
 # History:
 #
+# 		01/30/2013:
+# 			- Changed to use the sublime-setting tiered loading scheme. This allow users to override
+# 			  settings in their own user file in the User directory
+#
 # 		11/01/2012:
 # 			- Altered command to open Safari on Mac
 # 			- When invoked the current view is auto-saved
@@ -33,7 +37,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		#
 		# Load settings, if any
 		#
-		self._loadSettings()
+		self._loadSettings(self.view)
 
 		#
 		# Attempt to open the file in the selected view. If there isn't a saved
@@ -86,23 +90,21 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		else:
 			webbrowser.open_new_tab(fileToOpen.encode())
 
-	def _loadSettings(self):
-		settingsFile = os.path.normpath("%s/settings.json" % PLUGIN_DIRECTORY)
+	def _loadSettings(self, view):
 		self._browserCommand = ""
-		
-		if os.path.exists(settingsFile):
-			jsonData = open(settingsFile)
-			self._settings = json.load(jsonData)
-			jsonData.close()
+		self._settings = sublime.load_settings("View In Browser.sublime-settings")
 
-			if "selectedBrowser" in self._settings:
+		if self._settings:
+			if self._settings.has("selectedBrowser"):
 				osname = os.name
 				platform = sys.platform
+				selectedBrowser = self._settings.get("selectedBrowser")
+				supportedBrowsers = self._settings.get("supportedBrowsers")
 
-				if not self._settings["selectedBrowser"] in self._settings["supportedBrowsers"]:
+				if not selectedBrowser in supportedBrowsers:
 					raise	Exception("The selected browser '%s' is not supported" % self._settings["selectedBrowser"])
 
-				for env in self._settings["supportedBrowsers"][self._settings["selectedBrowser"]]:
+				for env in supportedBrowsers[selectedBrowser]:
 					print "OS name: %s, Platform: %s" % (env["osname"], env["platform"])
 
 					if re.match(env["osname"], osname) and re.match(env["platform"], platform):

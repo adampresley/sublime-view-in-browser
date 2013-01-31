@@ -16,14 +16,14 @@ Find this plugin in the list by name **View In Browser**.
 
 ## Configuring Browsers
 By default this plugin will open files in Firefox. You can configure it to open
-using another browser of your choice. To do this find the *settings.json* file
+using another browser of your choice. To do this find the *View In Browser.sublime-settings* file
 located in your Sublime configuration directory. This location varies by OS. For 
-example, in Ubuntu you will find the *settings.json* file at
+example, in Ubuntu you will find the *View In Browser.sublime-settings* file at
 **/home/<username>/.config/sublime-text-2/Packages/View in Browser**. In Windows this
 file will reside in **C:\Users\<username>\AppData\Roaming\Sublime Text 2\Packages\View in Browser**.
 
 The browser you wish to use to open files can be found at the bottom of the file
-*settings.json* and is set in the key named **selectedBrowser**. The list of browsers
+*View In Browser.sublime-settings* and is set in the key named **selectedBrowser**. The list of browsers
 you can use and configure are in the key named **supportedBrowsers**. 
 
 The **supportedBrowsers** values can be configured to have paths to your browser installations.
@@ -73,6 +73,10 @@ of the FILE protocol.
 
 ## Change History
 
+* 01/30/2013:
+   * All settings for this plugin now live in the file **View In Browser.sublime-settings*.
+     This allows for a user to override them in their *User* directory. The old 
+     **settings.json** file is no longer used. 
 * 01/28/2013:
    * Merged in change from imaginationac to remove menu nesting
 * 12/26/2012:
