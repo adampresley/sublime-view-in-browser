@@ -74,7 +74,7 @@ of the FILE protocol.
 ## Change History
 
 * 01/30/2013:
-   * All settings for this plugin now live in the file **View In Browser.sublime-settings*.
+   * All settings for this plugin now live in the file **View In Browser.sublime-settings**.
      This allows for a user to override them in their *User* directory. The old 
      **settings.json** file is no longer used. 
 * 01/28/2013:
