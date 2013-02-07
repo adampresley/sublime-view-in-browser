@@ -16,15 +16,10 @@ Find this plugin in the list by name **View In Browser**.
 
 ## Configuring Browsers
 By default this plugin will open files in Firefox. You can configure it to open
-using another browser of your choice. To do this find the *View In Browser.sublime-settings* file
-located in your Sublime configuration directory. This location varies by OS. For 
-example, in Ubuntu you will find the *View In Browser.sublime-settings* file at
-**/home/<username>/.config/sublime-text-2/Packages/View in Browser**. In Windows this
-file will reside in **C:\Users\<username>\AppData\Roaming\Sublime Text 2\Packages\View in Browser**.
+using another browser of your choice. To do this, choose *Settings - User* from *Preferences > Package Settings > View In Browser*.
 
-The browser you wish to use to open files can be found at the bottom of the file
-*View In Browser.sublime-settings* and is set in the key named **selectedBrowser**. The list of browsers
-you can use and configure are in the key named **supportedBrowsers**. 
+The browser you wish to use to open files is set in the key named **selectedBrowser**. The list of browsers
+you can use and configure are in the key named **supportedBrowsers**.
 
 The **supportedBrowsers** values can be configured to have paths to your browser installations.
 Each browser listed is an array (list) of configurations that allow you to setup a browser
