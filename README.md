@@ -90,7 +90,8 @@ of the FILE protocol.
 ## Change History
 
 * 02/18/2013:
-   * Added ability to use Windows special folder references to browser commands. Closes #10
+   * Added ability to use Windows special folder references to browser commands. Closes 
+     <a href="https://github.com/adampresley/sublime-view-in-browser/issues/10">#10</a>
 * 01/30/2013:
    * All settings for this plugin now live in the file **View In Browser.sublime-settings**.
      This allows for a user to override them in their *User* directory. The old 
