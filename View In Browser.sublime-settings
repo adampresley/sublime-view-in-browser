@@ -2,9 +2,14 @@
 	"supportedBrowsers": {
 		"firefox": [
 			{
-				"osname": ".*",
+				"osname": "posix",
 				"platform": ".*",
 				"command": "firefox"
+			},
+			{
+				"osname": "nt",
+				"platform": "win32",
+				"command": "C:/Program Files (x86)/Mozilla Firefox/firefox.exe"
 			}
 		],
 		"safari": [
@@ -30,7 +35,7 @@
 			{
 				"osname": "nt",
 				"platform": "win32",
-				"command": "C:/Users/psykoprogrammer/AppData/Local/Google/Chrome/Application/chrome.exe"
+				"command": "%Local AppData%/Google/Chrome/Application/chrome.exe"
 			}
 		],
 		"chromium": [

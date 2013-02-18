@@ -30,6 +30,7 @@ PLUGIN_DIRECTORY = os.getcwd()
 class ViewInBrowserCommand(sublime_plugin.TextCommand):
 	_settings = None
 	_browserCommand = ""
+	_windowsFolders = {}
 
 	def run(self, edit):
 		projectSettings = self.view.settings().get("sublime-view-in-browser")
@@ -107,7 +108,59 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 				for env in supportedBrowsers[selectedBrowser]:
 					print "OS name: %s, Platform: %s" % (env["osname"], env["platform"])
 
+					if env["osname"] == "nt":
+						self._windowsFolders = self.getUserShellFolders()
+						print self._windowsFolders
 					if re.match(env["osname"], osname) and re.match(env["platform"], platform):
 						print "Match! %s" % env["command"]
-						self._browserCommand = env["command"]
+						if env["osname"] == "nt":
+							specialFolder = re.sub(r"%([A-Za-z\s]+)%.*", "\\1", env["command"])
+							if specialFolder != env["command"]:
+								browserCommand = re.sub(r"%[A-Za-z\s]+%(.*)", "%s\\1" % self._windowsFolders[specialFolder], env["command"])
+							else:
+								browserCommand = env["command"]
+							self._browserCommand = re.sub(r"\\", "/", browserCommand)
+						else:
+							self._browserCommand = env["command"]
 
+	#
+	# Thanks to the Python for Windows site for this snippet.
+	# http://win32com.goermezer.de/content/view/221/285/
+	#
+	def getUserShellFolders(self):
+		# Routine to grab all the Windows Shell Folder locations from the registry.  If successful, returns dictionary
+		# of shell folder locations indexed on Windows keyword for each; otherwise, returns an empty dictionary.
+		import _winreg
+		return_dict = {}
+
+		# First open the registry hive
+		try:
+			Hive = _winreg.ConnectRegistry(None, _winreg.HKEY_CURRENT_USER)
+		except WindowsError:
+			print "Can't connect to registry hive HKEY_CURRENT_USER."
+			return return_dict
+
+		# Then open the registry key where Windows stores the Shell Folder locations
+		try:
+			Key = _winreg.OpenKey(Hive, "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders")
+		except WindowsError:
+			print "Can't open registry key Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders."
+			_winreg.CloseKey(Hive)
+			return return_dict
+
+		# Nothing failed above, so enumerate through all the Shell Folder values and return in a dictionary
+		# This relies on error at end of 
+		try:
+			for i in range(0, _winreg.QueryInfoKey(Key)[1]):
+				name, value, val_type = _winreg.EnumValue(Key, i)
+				return_dict[name] = value
+				i += 1
+			_winreg.CloseKey(Key)                           # Only use with for loop
+			_winreg.CloseKey(Hive)                          # Only use with for loop
+			return return_dict                              # Only use with for loop
+
+		except WindowsError:
+			# In case of failure before read completed, don't return partial results
+			_winreg.CloseKey(Key)
+			_winreg.CloseKey(Hive)
+			return {}
