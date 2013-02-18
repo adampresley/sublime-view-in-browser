@@ -30,7 +30,8 @@ The first is for your average Linux system. The second is for Windows.
 One of the things you may notice in the Windows configuration for *chrome* is a variable in
 the command path that looks like: **%Local AppData%**. This is a reference to your Windows
 installation's **AppData** folder in your user profile directory. There is a variable
-there because this value will differ for each user on your computer.
+there because this value will differ for each user on your computer, and Chrome installs
+to your **AppData** folder.
 
 Here is a list of supported variables:
 
