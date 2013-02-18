@@ -24,8 +24,28 @@ you can use and configure are in the key named **supportedBrowsers**.
 The **supportedBrowsers** values can be configured to have paths to your browser installations.
 Each browser listed is an array (list) of configurations that allow you to setup a browser
 for multiple operating systems. For example under *chrome* there are two configurations.
-The first is for your average Linux system. The second is for Windows. You'll notice the
-Windows path is incorrect and must be changed for your system.
+The first is for your average Linux system. The second is for Windows. 
+
+### Windows Considerations
+One of the things you may notice in the Windows configuration for *chrome* is a variable in
+the command path that looks like: **%Local AppData%**. This is a reference to your Windows
+installation's **AppData** folder in your user profile directory. There is a variable
+there because this value will differ for each user on your computer.
+
+Here is a list of supported variables:
+
+* **AppData** - Your main application data folder for your profile (usually roaming)
+* **Personal** - Your documents location
+* **Desktop** - The path to your Desktop location (may be unreliable)
+* **Start Menu** - The path to your Start Menu items location
+* **Local AppData** - Your local application data folder for your profile
+* **My Video** - Path to your videos location
+* **My Pictures** - Path to your pictures location
+* **My Music** - Path to your music location
+
+Note that many of these are not terribly useful for determining browser location, unless you
+have decided to install Firefox in your My Music folder. 
+
 
 ## Configure to View on Local Server
 The View In Browser plugin also supports the ability to view files in the context of
