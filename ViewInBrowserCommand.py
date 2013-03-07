@@ -1,6 +1,9 @@
 #
 # History:
 #
+# 		03/07/2013:
+# 			- Changed loading of settings so that getting shell folders for Windows is only called on a Windows platform
+#
 # 		01/30/2013:
 # 			- Changed to use the sublime-setting tiered loading scheme. This allow users to override
 # 			  settings in their own user file in the User directory
@@ -108,12 +111,11 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 				for env in supportedBrowsers[selectedBrowser]:
 					print "OS name: %s, Platform: %s" % (env["osname"], env["platform"])
 
-					if env["osname"] == "nt":
-						self._windowsFolders = self.getUserShellFolders()
-						print self._windowsFolders
 					if re.match(env["osname"], osname) and re.match(env["platform"], platform):
 						print "Match! %s" % env["command"]
 						if env["osname"] == "nt":
+							self._windowsFolders = self.getUserShellFolders()
+							print self._windowsFolders
 							specialFolder = re.sub(r"%([A-Za-z\s]+)%.*", "\\1", env["command"])
 							if specialFolder != env["command"]:
 								browserCommand = re.sub(r"%[A-Za-z\s]+%(.*)", "%s\\1" % self._windowsFolders[specialFolder], env["command"])

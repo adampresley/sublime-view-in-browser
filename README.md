@@ -89,6 +89,9 @@ of the FILE protocol.
 
 ## Change History
 
+* 03/08/2013:
+   * Avoid loading Windows special folder references when on a Mac
+   * Added Mac Chrome to the supported browsers list
 * 02/18/2013:
    * Added ability to use Windows special folder references to browser commands. Closes 
      <a href="https://github.com/adampresley/sublime-view-in-browser/issues/10">#10</a>
