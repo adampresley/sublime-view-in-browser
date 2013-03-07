@@ -116,6 +116,11 @@ of the FILE protocol.
 * 05/18/2012:
    * Initial code
 
+## Contributors
+* Dorian Patterson - <a href="https://github.com/imaginationac">imaginationac</a>
+* Neil Freeman - <a href="https://github.com/fitnr">fitnr</a>
+* Michael MacDonald - <a href="https://github.com/schlick">schlick</a>
+
 
 ## License
 The MIT License (MIT)
