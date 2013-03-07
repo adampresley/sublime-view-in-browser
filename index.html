@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sublime View In Browser Plugin by adampresley</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Sublime View In Browser Plugin</h1>
+        <p class="header">Open the contents of your current view/tab in a web browser</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/adampresley/sublime-view-in-browser/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/adampresley/sublime-view-in-browser/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/adampresley/sublime-view-in-browser">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/adampresley">adampresley</a></p>
+
+
+      </header>
+      <section>
+        <h1>Sublime Text 2 - View In Browser</h1>
+
+<p><em>View In Browser</em> is a Sublime Text 2 plugin that will open whatever is in your
+current view/tab. If the file current open is new and has not been saved a temporary 
+file is created (in your default temp directory for your OS) with the extension of 
+<strong>.htm</strong> and your browser will open it. However if the current open file is saved
+and has a name this plugin will open it in whatever you have set to handle
+its type.</p>
+
+<p>By default the keystroke assigned to this plugin is <em>CTRL + ALT + V</em>.</p>
+
+<h2>Installation</h2>
+
+<p>Using the Sublime Text 2 Package Control plugin (<a href="http://wbond.net/sublime_packages/package_control">http://wbond.net/sublime_packages/package_control</a>)
+press <em>CTRL + SHIFT + P</em> and find <strong>Package Control: Install Package</strong> and press <em>Enter</em>.
+Find this plugin in the list by name <strong>View In Browser</strong>.</p>
+
+<h2>Configuring Browsers</h2>
+
+<p>By default this plugin will open files in Firefox. You can configure it to open
+using another browser of your choice. To do this, choose <em>Settings - User</em> from <em>Preferences &gt; Package Settings &gt; View In Browser</em>.</p>
+
+<p>The browser you wish to use to open files is set in the key named <strong>selectedBrowser</strong>. The list of browsers
+you can use and configure are in the key named <strong>supportedBrowsers</strong>.</p>
+
+<p>The <strong>supportedBrowsers</strong> values can be configured to have paths to your browser installations.
+Each browser listed is an array (list) of configurations that allow you to setup a browser
+for multiple operating systems. For example under <em>chrome</em> there are two configurations.
+The first is for your average Linux system. The second is for Windows. </p>
+
+<h3>Windows Considerations</h3>
+
+<p>One of the things you may notice in the Windows configuration for <em>chrome</em> is a variable in
+the command path that looks like: <strong>%Local AppData%</strong>. This is a reference to your Windows
+installation's <strong>AppData</strong> folder in your user profile directory. There is a variable
+there because this value will differ for each user on your computer, and Chrome installs
+to your <strong>AppData</strong> folder.</p>
+
+<p>Here is a list of supported variables:</p>
+
+<ul>
+<li>
+<strong>AppData</strong> - Your main application data folder for your profile (usually roaming)</li>
+<li>
+<strong>Personal</strong> - Your documents location</li>
+<li>
+<strong>Desktop</strong> - The path to your Desktop location (may be unreliable)</li>
+<li>
+<strong>Start Menu</strong> - The path to your Start Menu items location</li>
+<li>
+<strong>Local AppData</strong> - Your local application data folder for your profile</li>
+<li>
+<strong>My Video</strong> - Path to your videos location</li>
+<li>
+<strong>My Pictures</strong> - Path to your pictures location</li>
+<li>
+<strong>My Music</strong> - Path to your music location</li>
+</ul><p>Note that many of these are not terribly useful for determining browser location, unless you
+have decided to install Firefox in your My Music folder. </p>
+
+<h2>Configure to View on Local Server</h2>
+
+<p>The View In Browser plugin also supports the ability to view files in the context of
+a local server. So if you have a local Apache, Tomcat, or some other server application running
+you can configure this plugin to open your file prefixed with a URL. </p>
+
+<p>To configure this the View In Browser plugin reads the configuration of your currently
+loaded project. You can edit a project file by opening the <em>sublime-project</em> file
+by choosing <strong>Project</strong> -&gt; <strong>Edit Project</strong>. In your project file you will need to specify 
+two things:</p>
+
+<ul>
+<li>
+<strong>baseUrl</strong> - The root URL to prefix files with </li>
+<li>
+<strong>basePath</strong> - The base path where your site/application lives</li>
+</ul><p>Here's how that looks.</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">"folders"</span><span class="o">:</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/home/&lt;username&gt;/code/python/my-cool-website"</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"settings"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"sublime-view-in-browser"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"baseUrl"</span><span class="o">:</span> <span class="s2">"http://localhost:8080"</span><span class="p">,</span>
+            <span class="s2">"basePath"</span><span class="o">:</span> <span class="s2">"/home/&lt;username&gt;/code/python/my-cool-website"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Notice the key named <strong>settings</strong> which is a dictionary that contains another key named
+<strong>sublime-view-in-browser</strong>. This is where you will put your <strong>baseUrl</strong> and <strong>basePath</strong>
+settings.</p>
+
+<p>Now when you activate View In Browser your file will open with the HTTP protocol instead
+of the FILE protocol.</p>
+
+<h2>Change History</h2>
+
+<ul>
+<li>03/08/2013:
+
+<ul>
+<li>Avoid loading Windows special folder references when on a Mac</li>
+<li>Added Mac Chrome to the supported browsers list</li>
+</ul>
+</li>
+<li>02/18/2013:
+
+<ul>
+<li>Added ability to use Windows special folder references to browser commands. Closes 
+<a href="https://github.com/adampresley/sublime-view-in-browser/issues/10">#10</a>
+</li>
+</ul>
+</li>
+<li>01/30/2013:
+
+<ul>
+<li>All settings for this plugin now live in the file <strong>View In Browser.sublime-settings</strong>.
+This allows for a user to override them in their <em>User</em> directory. The old 
+<strong>settings.json</strong> file is no longer used. </li>
+</ul>
+</li>
+<li>01/28/2013:
+
+<ul>
+<li>Merged in change from imaginationac to remove menu nesting</li>
+</ul>
+</li>
+<li>12/26/2012:
+
+<ul>
+<li>Added Linux Chromium to the supported browsers list</li>
+</ul>
+</li>
+<li>11/01/2012:
+
+<ul>
+<li>Altered command to open Safari on Mac</li>
+<li>When invoked the current view is auto-saved</li>
+</ul>
+</li>
+<li>10/25/2012:
+
+<ul>
+<li>New settings.json file to map browser/commands to OSes</li>
+<li>Plugin will use the specified browser to open files, or default to OS default when browser is unsupported</li>
+<li>Addressed encoding issue when calling open_new_tab</li>
+<li>Added ability to specify and respect local server config per project</li>
+</ul>
+</li>
+<li>05/21/2012:
+
+<ul>
+<li>Temp file only created if view is unsaved</li>
+</ul>
+</li>
+<li>05/18/2012:
+
+<ul>
+<li>Initial code</li>
+</ul>
+</li>
+</ul><h2>License</h2>
+
+<p>The MIT License (MIT)
+Copyright (c) 2012 Adam Presley</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
