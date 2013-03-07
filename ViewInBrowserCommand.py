@@ -12,7 +12,7 @@
 # 			- Altered command to open Safari on Mac
 # 			- When invoked the current view is auto-saved
 #
-#  	10/25/2012:
+# 		10/25/2012:
 # 			- New settings.json file to map browser/commands to OSes
 # 			- Plugin will use the specified browser to open files, or default to OS default when browser is unsupported
 # 			- Addressed encoding issue when calling open_new_tab
@@ -113,10 +113,11 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 
 					if re.match(env["osname"], osname) and re.match(env["platform"], platform):
 						print "Match! %s" % env["command"]
+
 						if env["osname"] == "nt":
 							self._windowsFolders = self.getUserShellFolders()
-							print self._windowsFolders
 							specialFolder = re.sub(r"%([A-Za-z\s]+)%.*", "\\1", env["command"])
+
 							if specialFolder != env["command"]:
 								browserCommand = re.sub(r"%[A-Za-z\s]+%(.*)", "%s\\1" % self._windowsFolders[specialFolder], env["command"])
 							else:
