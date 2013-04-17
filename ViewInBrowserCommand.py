@@ -111,6 +111,12 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 				for env in supportedBrowsers[selectedBrowser]:
 					print "OS name: %s, Platform: %s" % (env["osname"], env["platform"])
 
+					if type(env["command"]) == list:
+						for cmd in env["command"]:
+							if os.path.exists(cmd):
+								env["command"] = cmd
+								break
+
 					if re.match(env["osname"], osname) and re.match(env["platform"], platform):
 						print "Match! %s" % env["command"]
 
