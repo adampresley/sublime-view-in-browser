@@ -89,6 +89,9 @@ of the FILE protocol.
 
 ## Change History
 
+* 0/16/2013:
+   * Added support for muliple paths per browser configuration (jadient 
+     <a href="https://github.com/adampresley/sublime-view-in-browser/pull/14">#14</a>)
 * 03/08/2013:
    * Avoid loading Windows special folder references when on a Mac
    * Added Mac Chrome to the supported browsers list
@@ -120,7 +123,7 @@ of the FILE protocol.
 * Dorian Patterson - <a href="https://github.com/imaginationac">imaginationac</a>
 * Neil Freeman - <a href="https://github.com/fitnr">fitnr</a>
 * Michael MacDonald - <a href="https://github.com/schlick">schlick</a>
-
+* Jadient - <a href="https://github.com/jadient">jadient</a>
 
 ## License
 The MIT License (MIT)
