@@ -1,6 +1,9 @@
 #
 # History:
 #
+# 		06/15/2013:
+# 			- Forward slashes in paths on Windows are now converted prior to opening using local server path
+#
 # 		03/07/2013:
 # 			- Changed loading of settings so that getting shell folders for Windows is only called on a Windows platform
 #
@@ -24,9 +27,14 @@
 # 		05/18/2012:
 # 			- Initial code
 #
-import sublime, sublime_plugin
-import os, tempfile, webbrowser
-import json, re, sys
+import os
+import re
+import sys
+import json
+import sublime
+import tempfile
+import sublime_plugin
+import webbrowser
 
 PLUGIN_DIRECTORY = os.getcwd()
 
@@ -54,7 +62,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		# use them
 		#
 		if projectSettings:
-			fileToOpen = fileToOpen.replace(projectSettings["basePath"], projectSettings["baseUrl"])
+			fileToOpen = re.sub(r"\\", "/", fileToOpen.replace(projectSettings["basePath"], projectSettings["baseUrl"]))
 
 		if fileToOpen == None:
 			#

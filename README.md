@@ -89,7 +89,10 @@ of the FILE protocol.
 
 ## Change History
 
-* 0/16/2013:
+* 06/15/2013:
+   * Backslashes in Windows are now converted to forward slashes when using
+     a local server configuration. Closes <a href="https://github.com/adampresley/sublime-view-in-browser/issues/16">#16</a>
+* 04/16/2013:
    * Added support for muliple paths per browser configuration (jadient 
      <a href="https://github.com/adampresley/sublime-view-in-browser/pull/14">#14</a>)
 * 03/08/2013:
