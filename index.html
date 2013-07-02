@@ -1,22 +1,24 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<title>Sublime View In Browser Plugin by adampresley</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+	<title>Sublime Text View In Browser Plugin by adampresley</title>
 
-	<link rel="stylesheet" href="stylesheets/styles.css">
-	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+	<link rel="stylesheet" href="stylesheets/styles.css" />
+	<link rel="stylesheet" href="stylesheets/pygment_trac.css" />
 	<script src="javascripts/scale.fix.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
+
 <body>
 	<div class="wrapper">
 		<header>
-			<h1 class="header">Sublime View In Browser Plugin</h1>
+			<h1 class="header">Sublime Text View In Browser Plugin</h1>
 			<p class="header">Open the contents of your current view/tab in a web browser</p>
 
 			<ul>
@@ -25,125 +27,51 @@
 				<li><a class="buttons github" href="https://github.com/adampresley/sublime-view-in-browser">View On GitHub</a></li>
 			</ul>
 
-			<p class="header">This project is maintained by <a class="header name" href="https://github.com/adampresley">adampresley</a></p>
-
-
+			<p>
+				<a href="https://github.com/adampresley" target="_blank"><img src="images/octocat-small.png" alt="GitHub" title="GitHub" height="24" /></a>
+				<a href="https://twitter.com/adampresley" target="_blank"><img src="images/twitter.png" alt="Twitter" title="Twitter" width="24" height="24" /></a>
+				<a href="https://plus.google.com/u/0/101569206882533476460/posts/p/pub" target="_blank"><img src="images/gplus-32.png" alt="Google+" title="Google+" width="24" height="24" /></a>
+				<a href="http://www.linkedin.com/in/adampresley" target="_blank"><img src="images/linkedin.png" alt="LinkedIn" title="LinkedIn" width="24" height="24" /></a>
+				<a href="http://about.me/adampresley" target="_blank"><img src="images/aboutme.png" alt="About.me" title="About.me" width="24" height="24" /></a>
+			</p>
 		</header>
+
 		<section>
-			<h1>Sublime Text 2 - View In Browser</h1>
+			<h1>View In Browser</h1>
 			<p>
 				<em>View In Browser</em> is a Sublime Text 2 plugin that will open whatever is in your
-				current view/tab. If the file current open is new and has not been saved a temporary 
-				file is created (in your default temp directory for your OS) with the extension of 
-				<strong>.htm</strong> and your browser will open it. However if the current open file is saved
-				and has a name this plugin will open it in whatever you have set to handle
-				its type.
+				current view/tab in your browser of choice. If the file you are working with is new
+				and has not been saved then this plugin will save a temporary copy fo you and then open it up.
+				View In Browser also works with local application servers to open your files using a URL prefix.
 			</p>
 
-			<p>By default the keystroke assigned to this plugin is <em>CTRL + ALT + V</em>.</p>
+			<div class="left-screenshot">
+				<h3>From this...</h3>
+				<img src="images/sublime-screenshot.png" alt="Sublime Text Screenshot" />
+			</div>
 
-			<h2>Installation</h2>
+			<div class="right-screenshot">
+				<h3>To this.</h3>
+				<img src="images/browser-screenshot.png" alt="Browser Screenshot" />
+			</div>
+
+			<div class="final-push">
+				<h3>In just one keystroke.</h3>
+				<p><em>CTRL + ALT + V</em></p>
+			</div>
+
+
+			<h2>Where To Start</h2>
 			<p>
-				Using the Sublime Text 2 Package Control plugin (<a href="http://wbond.net/sublime_packages/package_control">http://wbond.net/sublime_packages/package_control</a>)
-				press <em>CTRL + SHIFT + P</em> and find <strong>Package Control: Install Package</strong> and press <em>Enter</em>.
-				Find this plugin in the list by name <strong>View In Browser</strong>.
-			</p>
-
-			<h2>Configuring Browsers</h2>
-
-			<p>
-				By default this plugin will open files in Firefox. You can configure it to open
-				using another browser of your choice. To do this, choose <em>Settings - User</em> from <em>Preferences &gt; Package Settings &gt; View In Browser</em>.
-			</p>
-
-			<p>
-				The browser you wish to use to open files is set in the key named <strong>selectedBrowser</strong>. The list of browsers
-				you can use and configure are in the key named <strong>supportedBrowsers</strong>.
-			</p>
-
-			<p>
-				The <strong>supportedBrowsers</strong> values can be configured to have paths to your browser installations.
-				Each browser listed is an array (list) of configurations that allow you to setup a browser
-				for multiple operating systems. For example under <em>chrome</em> there are two configurations.
-				The first is for your average Linux system. The second is for Windows. 
-			</p>
-
-			<h3>Windows Considerations</h3>
-
-			<p>
-				One of the things you may notice in the Windows configuration for <em>chrome</em> is a variable in
-				the command path that looks like: <strong>%Local AppData%</strong>. This is a reference to your Windows
-				installation's <strong>AppData</strong> folder in your user profile directory. There is a variable
-				there because this value will differ for each user on your computer, and Chrome installs
-				to your <strong>AppData</strong> folder.
-			</p>
-
-			<p>Here is a list of supported variables:</p>
-
-			<ul>
-				<li><strong>AppData</strong> - Your main application data folder for your profile (usually roaming)</li>
-				<li><strong>Personal</strong> - Your documents location</li>
-				<li><strong>Desktop</strong> - The path to your Desktop location (may be unreliable)</li>
-				<li><strong>Start Menu</strong> - The path to your Start Menu items location</li>
-				<li><strong>Local AppData</strong> - Your local application data folder for your profile</li>
-				<li><strong>My Video</strong> - Path to your videos location</li>
-				<li><strong>My Pictures</strong> - Path to your pictures location</li>
-				<li><strong>My Music</strong> - Path to your music location</li>
-			</ul>
-
-			<p>
-				Note that many of these are not terribly useful for determining browser location, unless you
-				have decided to install Firefox in your My Music folder. 
-			</p>
-
-			<h2>Configure to View on Local Server</h2>
-
-			<p>
-				The View In Browser plugin also supports the ability to view files in the context of
-				a local server. So if you have a local Apache, Tomcat, or some other server application running
-				you can configure this plugin to open your file prefixed with a URL. 
-			</p>
-
-			<p>
-				To configure this the View In Browser plugin reads the configuration of your currently
-				loaded project. You can edit a project file by opening the <em>sublime-project</em> file
-				by choosing <strong>Project</strong> -&gt; <strong>Edit Project</strong>. In your project file you will need to specify 
-				two things:
+				To get started the <a href="https://github.com/adampresley/sublime-view-in-browser/wiki" target="_blank">View In Browser wiki</a> has
+				guides to aide in installation, browser configuration, and local server project configuration.
 			</p>
 
 			<ul>
-				<li><strong>baseUrl</strong> - The root URL to prefix files with </li>
-				<li><strong>basePath</strong> - The base path where your site/application lives</li>
+				<li><a href="https://github.com/adampresley/sublime-view-in-browser/wiki/Getting-Started" target="_blank">Getting Started</a></li>
+				<li><a href="https://github.com/adampresley/sublime-view-in-browser/wiki/Configuring-Browsers" target="_blank">Configuring Browsers</a></li>
+				<li><a href="https://github.com/adampresley/sublime-view-in-browser/wiki/Viewing-on-a-Local-Server" target="_blank">Viewing on a Local Server</a></li>
 			</ul>
-
-			<p>Here's how that looks.</p>
-
-<div class="highlight"><pre><span class="p">{</span>
-  <span class="s2">"folders"</span><span class="o">:</span>
-  <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/home/&lt;username&gt;/code/python/my-cool-website"</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="s2">"settings"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"sublime-view-in-browser"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"baseUrl"</span><span class="o">:</span> <span class="s2">"http://localhost:8080"</span><span class="p">,</span>
-      <span class="s2">"basePath"</span><span class="o">:</span> <span class="s2">"/home/&lt;username&gt;/code/python/my-cool-website"</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-			<p>
-				Notice the key named <strong>settings</strong> which is a dictionary that contains another key named
-				<strong>sublime-view-in-browser</strong>. This is where you will put your <strong>baseUrl</strong> and <strong>basePath</strong>
-				settings.
-			</p>
-
-			<p>
-				Now when you activate View In Browser your file will open with the HTTP protocol instead
-				of the FILE protocol.
-			</p>
 
 			<h2>Change History</h2>
 
