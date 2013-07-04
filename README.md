@@ -1,6 +1,6 @@
-# Sublime Text 2 - View In Browser
+# Sublime Text - View In Browser
 
-*<a href="http://adampresley.github.io/sublime-view-in-browser/">View In Browser</a>* is a Sublime Text 2 plugin that will open whatever is in your
+*<a href="http://adampresley.github.io/sublime-view-in-browser/">View In Browser</a>* is a Sublime Text plugin that will open whatever is in your
 current view/tab. If the file current open is new and has not been saved a temporary 
 file is created (in your default temp directory for your OS) with the extension of 
 **.htm** and your browser will open it. However if the current open file is saved
@@ -10,7 +10,7 @@ its type.
 By default the keystroke assigned to this plugin is *CTRL + ALT + V*.
 
 ## Installation
-Using the Sublime Text 2 Package Control plugin (http://wbond.net/sublime_packages/package_control)
+Using the Sublime Text Package Control plugin (http://wbond.net/sublime_packages/package_control)
 press *CTRL + SHIFT + P* and find **Package Control: Install Package** and press *Enter*.
 Find this plugin in the list by name **View In Browser**.
 
@@ -89,6 +89,8 @@ of the FILE protocol.
 
 ## Change History
 
+* 07/03/2013:
+   * Changes to support Sublime Text 3 and Python 3
 * 06/15/2013:
    * Backslashes in Windows are now converted to forward slashes when using
      a local server configuration. Closes <a href="https://github.com/adampresley/sublime-view-in-browser/issues/16">#16</a>
