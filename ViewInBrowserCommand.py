@@ -1,6 +1,9 @@
 #
 # History:
 #
+# 		07/03/2013:
+# 			- Changes to support Sublime Text 3 and Python 3
+#
 # 		06/15/2013:
 # 			- Forward slashes in paths on Windows are now converted prior to opening using local server path
 #
@@ -43,7 +46,11 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 	_browserCommand = ""
 	_windowsFolders = {}
 
+	_pythonVersion = sys.version_info[0]
+
 	def run(self, edit):
+		print("Python version {0}".format(self._pythonVersion))
+
 		projectSettings = self.view.settings().get("sublime-view-in-browser")
 
 		#
@@ -91,16 +98,24 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		# And open. If the settings file contains a valid selected browser use that
 		# command to open this file. Otherwise use the system default.
 		#
-		print "Opening ", fileToOpen
+		print("Opening ", fileToOpen)
 
 		if self._browserCommand:
 			command = "%s %%s" % self._browserCommand
-			print command
+			print(command)
 
-			b = webbrowser.get(command.encode())
-			b.open_new_tab(fileToOpen.encode())
+			if self._pythonVersion < 3:
+				b = webbrowser.get(command.encode())
+				b.open_new_tab(fileToOpen.encode())
+			else:
+				b = webbrowser.get(command)
+				b.open_new_tab(fileToOpen)
+
 		else:
-			webbrowser.open_new_tab(fileToOpen.encode())
+			if self._pythonVersion < 3:
+				webbrowser.open_new_tab(fileToOpen.encode())
+			else:
+				webbrowser.open_new_tab(fileToOpen)
 
 	def _loadSettings(self, view):
 		self._browserCommand = ""
@@ -114,10 +129,10 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 				supportedBrowsers = self._settings.get("supportedBrowsers")
 
 				if not selectedBrowser in supportedBrowsers:
-					raise	Exception("The selected browser '%s' is not supported" % self._settings["selectedBrowser"])
+					raise Exception("The selected browser '%s' is not supported" % self._settings["selectedBrowser"])
 
 				for env in supportedBrowsers[selectedBrowser]:
-					print "OS name: %s, Platform: %s" % (env["osname"], env["platform"])
+					print("OS name: %s, Platform: %s" % (env["osname"], env["platform"]))
 
 					if type(env["command"]) == list:
 						for cmd in env["command"]:
@@ -126,7 +141,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 								break
 
 					if re.match(env["osname"], osname) and re.match(env["platform"], platform):
-						print "Match! %s" % env["command"]
+						print("Match! %s" % env["command"])
 
 						if env["osname"] == "nt":
 							self._windowsFolders = self.getUserShellFolders()
@@ -154,14 +169,14 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		try:
 			Hive = _winreg.ConnectRegistry(None, _winreg.HKEY_CURRENT_USER)
 		except WindowsError:
-			print "Can't connect to registry hive HKEY_CURRENT_USER."
+			print("Can't connect to registry hive HKEY_CURRENT_USER.")
 			return return_dict
 
 		# Then open the registry key where Windows stores the Shell Folder locations
 		try:
 			Key = _winreg.OpenKey(Hive, "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders")
 		except WindowsError:
-			print "Can't open registry key Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders."
+			print("Can't open registry key Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders.")
 			_winreg.CloseKey(Hive)
 			return return_dict
 
