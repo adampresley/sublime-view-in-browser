@@ -45,13 +45,15 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 	_settings = None
 	_browserCommand = ""
 	_windowsFolders = {}
+	_requestedBrowser = None
 
 	_pythonVersion = sys.version_info[0]
 
-	def run(self, edit):
+	def run(self, edit, browser=None):
 		print("Python version {0}".format(self._pythonVersion))
 
 		projectSettings = self.view.settings().get("sublime-view-in-browser")
+		self._requestedBrowser = browser
 
 		#
 		# Load settings, if any
@@ -125,11 +127,21 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 			if self._settings.has("selectedBrowser"):
 				osname = os.name
 				platform = sys.platform
-				selectedBrowser = self._settings.get("selectedBrowser")
+
+				#
+				# If a specific browser was requested through the keystroke command
+				# use it. Otherwise default to the browser in the settings.
+				#
+				if self._requestedBrowser is not None:
+					selectedBrowser = self._requestedBrowser
+				else:
+					selectedBrowser = self._settings.get("selectedBrowser")
+
+
 				supportedBrowsers = self._settings.get("supportedBrowsers")
 
 				if not selectedBrowser in supportedBrowsers:
-					raise Exception("The selected browser '%s' is not supported" % self._settings["selectedBrowser"])
+					raise Exception("The selected browser '%s' is not supported" % selectedBrowser)
 
 				for env in supportedBrowsers[selectedBrowser]:
 					print("OS name: %s, Platform: %s" % (env["osname"], env["platform"]))
