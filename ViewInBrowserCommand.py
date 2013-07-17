@@ -162,7 +162,11 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 	def getUserShellFolders(self):
 		# Routine to grab all the Windows Shell Folder locations from the registry.  If successful, returns dictionary
 		# of shell folder locations indexed on Windows keyword for each; otherwise, returns an empty dictionary.
-		import _winreg
+		if self._pythonVersion < 3:
+			import _winreg
+		else:
+			import winreg
+			
 		return_dict = {}
 
 		# First open the registry hive
