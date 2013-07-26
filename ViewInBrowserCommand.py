@@ -165,7 +165,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		if self._pythonVersion < 3:
 			import _winreg
 		else:
-			import winreg
+			import winreg as _winreg
 			
 		return_dict = {}
 
