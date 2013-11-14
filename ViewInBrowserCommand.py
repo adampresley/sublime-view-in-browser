@@ -83,7 +83,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 			region = sublime.Region(0, self.view.size())
 			text = self.view.substr(region)
 
-			tempFile.write(text)
+			tempFile.write(text.encode('utf-8'))
 			tempFile.close()
 
 			fileToOpen = tempFile.name
