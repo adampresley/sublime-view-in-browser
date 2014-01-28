@@ -1,8 +1,8 @@
 # Sublime Text - View In Browser
 
 *<a href="http://adampresley.github.io/sublime-view-in-browser/">View In Browser</a>* is a Sublime Text plugin that will open whatever is in your
-current view/tab. If the file current open is new and has not been saved a temporary 
-file is created (in your default temp directory for your OS) with the extension of 
+current view/tab. If the file current open is new and has not been saved a temporary
+file is created (in your default temp directory for your OS) with the extension of
 **.htm** and your browser will open it. However if the current open file is saved
 and has a name this plugin will open it in whatever you have set to handle
 its type.
@@ -24,7 +24,30 @@ you can use and configure are in the key named **supportedBrowsers**.
 The **supportedBrowsers** values can be configured to have paths to your browser installations.
 Each browser listed is an array (list) of configurations that allow you to setup a browser
 for multiple operating systems. For example under *chrome* there are two configurations.
-The first is for your average Linux system. The second is for Windows. 
+The first is for your average Linux system. The second is for Windows.
+
+## Other Browsers
+View In Browser also provides key bindings to open your current view in browser other than
+your **selectedBrowser**. Below is a listing of the keys and what browser open with
+those key bindings.
+
+* *CTRL + ALT + F* - Firefox
+* *CTRL + ALT + C* - Chrome
+* *CTRL + ALT + I* - Internet Explorer
+* *CTRL + ALT + S* - Safari
+
+Like any other key binding in Sublime these can be changed. Below is an example of the
+key configuration. You can remap these in your User key bindings configuration file.
+
+```javascript
+[
+    { "keys": [ "ctrl+alt+v" ], "command": "view_in_browser" },
+    { "keys": [ "ctrl+alt+f" ], "command": "view_in_browser", "args": { "browser": "firefox" } },
+    { "keys": [ "ctrl+alt+c" ], "command": "view_in_browser", "args": { "browser": "chrome" } },
+    { "keys": [ "ctrl+alt+i" ], "command": "view_in_browser", "args": { "browser": "iexplore" } },
+    { "keys": [ "ctrl+alt+s" ], "command": "view_in_browser", "args": { "browser": "safari" } }
+]
+```
 
 ### Windows Considerations
 One of the things you may notice in the Windows configuration for *chrome* is a variable in
@@ -45,20 +68,20 @@ Here is a list of supported variables:
 * **My Music** - Path to your music location
 
 Note that many of these are not terribly useful for determining browser location, unless you
-have decided to install Firefox in your My Music folder. 
+have decided to install Firefox in your My Music folder.
 
 
 ## Configure to View on Local Server
 The View In Browser plugin also supports the ability to view files in the context of
 a local server. So if you have a local Apache, Tomcat, or some other server application running
-you can configure this plugin to open your file prefixed with a URL. 
+you can configure this plugin to open your file prefixed with a URL.
 
 To configure this the View In Browser plugin reads the configuration of your currently
 loaded project. You can edit a project file by opening the *sublime-project* file
-by choosing **Project** -> **Edit Project**. In your project file you will need to specify 
+by choosing **Project** -> **Edit Project**. In your project file you will need to specify
 two things:
 
-* **baseUrl** - The root URL to prefix files with 
+* **baseUrl** - The root URL to prefix files with
 * **basePath** - The base path where your site/application lives
 
 Here's how that looks.
@@ -95,18 +118,18 @@ of the FILE protocol.
    * Backslashes in Windows are now converted to forward slashes when using
      a local server configuration. Closes <a href="https://github.com/adampresley/sublime-view-in-browser/issues/16">#16</a>
 * 04/16/2013:
-   * Added support for muliple paths per browser configuration (jadient 
+   * Added support for muliple paths per browser configuration (jadient
      <a href="https://github.com/adampresley/sublime-view-in-browser/pull/14">#14</a>)
 * 03/08/2013:
    * Avoid loading Windows special folder references when on a Mac
    * Added Mac Chrome to the supported browsers list
 * 02/18/2013:
-   * Added ability to use Windows special folder references to browser commands. Closes 
+   * Added ability to use Windows special folder references to browser commands. Closes
      <a href="https://github.com/adampresley/sublime-view-in-browser/issues/10">#10</a>
 * 01/30/2013:
    * All settings for this plugin now live in the file **View In Browser.sublime-settings**.
-     This allows for a user to override them in their *User* directory. The old 
-     **settings.json** file is no longer used. 
+     This allows for a user to override them in their *User* directory. The old
+     **settings.json** file is no longer used.
 * 01/28/2013:
    * Merged in change from imaginationac to remove menu nesting
 * 12/26/2012:
@@ -134,13 +157,13 @@ of the FILE protocol.
 The MIT License (MIT)
 Copyright (c) 2012 Adam Presley
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
