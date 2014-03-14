@@ -18,7 +18,7 @@
 			{
 				"osname": "nt",
 				"platform": "win32",
-				"command": "C:/Program Files/Internet Explorer/iexplore.exe"
+				"command": "%PROGRAMFILES%/Internet Explorer/iexplore.exe"
 			}
 		],
 		"chrome": [
@@ -30,7 +30,7 @@
 			{
 				"osname": "nt",
 				"platform": "win32",
-				"command": "C:/Users/psykoprogrammer/AppData/Local/Google/Chrome/Application/chrome.exe"
+				"command": "%USERPROFILE%/AppData/Local/Google/Chrome/Application/chrome.exe"
 			}
 		],
 		"chromium": [
