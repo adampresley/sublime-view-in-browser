@@ -112,6 +112,8 @@ of the FILE protocol.
 
 ## Change History
 
+* 05/15/2014:
+   * Current view only saves if there are modifications
 * 07/03/2013:
    * Changes to support Sublime Text 3 and Python 3
 * 06/15/2013:

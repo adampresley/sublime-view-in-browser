@@ -1,6 +1,9 @@
 #
 # History:
 #
+# 		05/15/2014:
+# 			- Current view only saves if there are modifications
+#
 # 		07/03/2013:
 # 			- Changes to support Sublime Text 3 and Python 3
 #
@@ -67,7 +70,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		fileToOpen = self.view.file_name()
 
 		#
-		# If we've specified settings for a local server environment 
+		# If we've specified settings for a local server environment
 		# use them
 		#
 		if projectSettings:
@@ -93,10 +96,12 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 			#
 			# Ensure the current view is saved
 			#
-			self.view.window().run_command("save")
+			if self.view.is_dirty():
+				print("File %s is dirty. Saving..." % (fileToOpen,))
+				self.view.window().run_command("save")
 
-			
-		# 
+
+		#
 		# And open. If the settings file contains a valid selected browser use that
 		# command to open this file. Otherwise use the system default.
 		#
@@ -178,7 +183,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 			import _winreg
 		else:
 			import winreg as _winreg
-			
+
 		return_dict = {}
 
 		# First open the registry hive
@@ -197,7 +202,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 			return return_dict
 
 		# Nothing failed above, so enumerate through all the Shell Folder values and return in a dictionary
-		# This relies on error at end of 
+		# This relies on error at end of
 		try:
 			for i in range(0, _winreg.QueryInfoKey(Key)[1]):
 				name, value, val_type = _winreg.EnumValue(Key, i)
