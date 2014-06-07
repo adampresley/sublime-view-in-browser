@@ -4,7 +4,7 @@
         "mnemonic": "T",
         "id": "tools",
         "children":
-        [ 
+        [
             {
                 "command": "view_in_browser",
                 "caption": "View in Browser"
@@ -28,14 +28,63 @@
                         "children":
                         [
                             {
-                                "command": "open_file", 
+                                "command": "open_file",
                                 "args": {"file": "${packages}/View In Browser/View In Browser.sublime-settings"},
                                 "caption": "Settings – Default"
                             },
                             {
-                                "command": "open_file", 
+                                "command": "open_file",
                                 "args": {"file": "${packages}/User/View In Browser.sublime-settings"},
                                 "caption": "Settings – User"
+                            },
+                            { "caption": "-" },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/View in Browser/Default (OSX).sublime-keymap",
+                                    "platform": "OSX"
+                                },
+                                "caption": "Key Bindings – Default"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/View in Browser/Default (Linux).sublime-keymap",
+                                    "platform": "Linux"
+                                },
+                                "caption": "Key Bindings – Default"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/View in Browser/Default (Windows).sublime-keymap",
+                                    "platform": "Windows"
+                                },
+                                "caption": "Key Bindings – Default"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/Default (OSX).sublime-keymap",
+                                    "platform": "OSX"
+                                },
+                                "caption": "Key Bindings – User"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/Default (Linux).sublime-keymap",
+                                    "platform": "Linux"
+                                },
+                                "caption": "Key Bindings – User"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/Default (Windows).sublime-keymap",
+                                    "platform": "Windows"
+                                },
+                                "caption": "Key Bindings – User"
                             },
                             { "caption": "-" }
                         ]
@@ -43,5 +92,5 @@
                 ]
             }
         ]
-    }    
+    }
 ]
