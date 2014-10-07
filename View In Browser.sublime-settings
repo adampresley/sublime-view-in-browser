@@ -1,61 +1,27 @@
 {
-	"supportedBrowsers": {
-		"firefox": [
-			{
-				"osname": "posix",
-				"platform": ".*",
-				"command": "firefox"
-			},
-			{
-				"osname": "posix",
-				"platform": "darwin",
-				"command": "open -a \"/Applications/Firefox.app\""
-			},
-			{
-				"osname": "nt",
-				"platform": "win32",
-				"command": "C:/Program Files (x86)/Mozilla Firefox/firefox.exe"
-			}
-		],
-		"safari": [
-			{
-				"osname": "posix",
-				"platform": "darwin",
-				"command": "open -a \"/Applications/Safari.app\""
-			}
-		],
-		"iexplore": [
-			{
-				"osname": "nt",
-				"platform": "win32",
-				"command": "C:/Program Files/Internet Explorer/iexplore.exe"
-			}
-		],
-		"chrome": [
-			{
-				"osname": "posix",
-				"platform": "darwin",
-				"command": "open -a \"/Applications/Google Chrome.app\""
-			},
-			{
-				"osname": "posix",
-				"platform": "linux.*",
-				"command": "google-chrome"
-			},
-			{
-				"osname": "nt",
-				"platform": "win32",
-				"command": "%Local AppData%/Google/Chrome/Application/chrome.exe"
-			}
-		],
-		"chromium": [
-			{
-				"osname": "posix",
-				"platform": "linux.*",
-				"command": "chromium"
-			}
-		]
+	"posix": {
+		"linux": {
+			"firefox": "firefox -new-tab",
+			"chrome": "google-chrome",
+			"chrome64": "google-chrome",
+			"chromium": "chromium"
+		},
+
+		"darwin": {
+			"firefox": "open -a \"/Applications/Firefox.app\"",
+			"safari": "open -a \"/Applications/Safari.app\"",
+			"chrome": "open -a \"/Applications/Google Chrome.app\"",
+			"chrome64": "open -a \"/Applications/Google Chrome.app\""
+		}
+	},
+	"nt": {
+		"win32": {
+			"firefox": "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe -new-tab",
+			"iexplore": "C:\\Program Files\\Internet Explorer\\iexplore.exe",
+			"chrome": "%Local AppData%\\Google\\Chrome\\Application\\chrome.exe",
+			"chrome64": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+		}
 	},
 
-	"selectedBrowser": "firefox"
+	"browser": "firefox"
 }
