@@ -229,7 +229,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 		# command to open this file. Otherwise use the system default.
 		#
 		if pluginSettings["baseCommand"]:
-			command = "%s %s" % (pluginSettings["baseCommand"], fileToOpen.encode(sys.getfilesystemencoding()) if self._pythonVersion < 3 else fileToOpen,)
+			command = "%s %s" % (pluginSettings["baseCommand"], fileToOpen.decode().encode(sys.getfilesystemencoding()) if self._pythonVersion < 3 else fileToOpen,)
 
 			print(command)
 			self.openBrowser(command, self.getOsName())
