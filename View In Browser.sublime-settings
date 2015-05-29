@@ -26,7 +26,7 @@
 			"iexplore": "C:\\Program Files\\Internet Explorer\\iexplore.exe",
 			"chrome": "%Local AppData%\\Google\\Chrome\\Application\\chrome.exe",
 			"chrome64": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-			"ynadex": "%Local AppData%\\Yandex\\YandexBrowser\\browser.exe"
+			"yandex": "%Local AppData%\\Yandex\\YandexBrowser\\browser.exe"
 		}
 	},
 
