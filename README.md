@@ -17,6 +17,7 @@ The browser you wish to use to open files is set in the key named **browser**. T
 * Firefox - Mac OS, Linux, Windows
 * Chrome - Mac OS, Linux, Windows
 * Chrome64 - Windows
+* Yandex - Windows
 * Safari - Mac OS
 * Internet Explorer - Windows
 * Chromium - Linux
