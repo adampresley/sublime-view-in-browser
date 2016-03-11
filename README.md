@@ -90,6 +90,8 @@ Now when you activate View In Browser your file will open with the HTTP protocol
 
 ## Change History
 
+* 03/11/2016:
+  * Fix issue where parenthesis in paths would cause a failure to load. Solves #52
 * 10/06/2014:
   * Rewrite for version 2.0.0
   * Using subprocess instead of webbrowser. Seems to solve #19

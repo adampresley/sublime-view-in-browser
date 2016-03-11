@@ -1,6 +1,9 @@
 #
 # History:
 #
+# 		03/11/2016:
+# 			- Fix issue where parenthesis in paths would cause a failure to load. Solves #52
+#
 # 		10/06/2014:
 # 			- Rewrite for version 2.0.0
 # 			- Using subprocess instead of webbrowser. Seems to solve #19
@@ -179,7 +182,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 
 	def normalizePath(self, fileToOpen):
 		fileToOpen = fileToOpen.replace("\\", "/")
-		fileToOpen = "file:///%s" % fileToOpen.replace(" ", "%20")
+		fileToOpen = "file:///%s" % fileToOpen.replace(" ", "%20").replace("(", "%28").replace(")", "%29")
 
 		return fileToOpen
 
