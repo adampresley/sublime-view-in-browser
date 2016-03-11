@@ -147,7 +147,7 @@ class ViewInBrowserCommand(sublime_plugin.TextCommand):
 			return {}
 
 	def giveFileAProjectPath(self, fileToOpen, basePath, baseUrl):
-		return re.sub(r"\\", "/", fileToOpen.replace(basePath, baseUrl))
+		return re.sub(r"\\", "/", fileToOpen.replace(basePath, baseUrl)).replace(" ", "%20").replace("(", "%28").replace(")", "%29")
 
 	def loadPluginSettings(self, defaultBrowser):
 		result = {
