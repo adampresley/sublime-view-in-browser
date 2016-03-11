@@ -1,0 +1,1 @@
+Fixed issue where parenthesis in paths would cause a failure to load.
